@@ -1,0 +1,13 @@
+
+
+long condition:
+    fhma crossover mhma and mhma > shma
+long close:
+    fhma < mhma
+
+short condition:
+    fhma crossunder mhma and mhma < shma
+short close:
+    fhma > mhma
+
+
