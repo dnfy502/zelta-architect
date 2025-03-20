@@ -126,7 +126,7 @@ def run_backtest(filename, initial_portfolio=1000, commission=0.15):
     Max_Win = max(pnl_log)
     Max_Loss = min(pnl_log)
     Win_Rate_of_Longs = (len([pnl for pnl in pnl_log[:longs] if pnl > 0]) / longs) * 100
-    Win_Rate_of_Shorts = (len([pnl for pnl in pnl_log[longs:] if pnl > 0]) / shorts) * 100
+    #Win_Rate_of_Shorts = (len([pnl for pnl in pnl_log[longs:] if pnl > 0]) / shorts) * 100
 
 
     # drawdown and ttr
@@ -178,7 +178,7 @@ def run_backtest(filename, initial_portfolio=1000, commission=0.15):
     print(f'Number of Long Trades: {No_of_longs}')
     print(f'Number of Short Trades: {No_of_shorts}')
     print(f'Win Rate of Long Trades: {Win_Rate_of_Longs:.2f}%')
-    print(f'Win Rate of Short Trades: {Win_Rate_of_Shorts:.2f}%')
+    #print(f'Win Rate of Short Trades: {Win_Rate_of_Shorts:.2f}%')
     print(f'Maximum Time to Recovery: {max_ttr} days')
     print(f'Average Time to Recovery: {avg_ttr:.2f} days')
     print(f'Maximum Drawdown Percent: {max_drawdown_percent:.2f}%')
@@ -384,4 +384,4 @@ def overfit_result(filename, initial_portfolio=1000, commission=0.15):
     return round(float(Final_balance),2), round(Win_Rate,2), round(max_drawdown_percent,2)
 
 if __name__ == '__main__':
-    run_backtest('results.csv')
+    run_backtest('trading_results_new_12h (1).csv')

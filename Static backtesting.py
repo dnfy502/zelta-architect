@@ -173,4 +173,4 @@ def run_backtest(filename, initial_portfolio=1000, trade_size = 1000, commission
 
     fig.show()
 
-run_backtest(r'D:\VS Code\Trade_Log 10,68.csv')
+run_backtest('trading_results_new_12h (1).csv')
