@@ -60,10 +60,6 @@ def strat(data):
         if sum == 0:
             if crossover(data, 'FHMA', 'MHMA', i):
                 if data['MHMA'].iloc[i] > data['SHMA'].iloc[i]:
-                    s1 = data['MHMA'].iloc[i] - data['MHMA'].iloc[i-2]
-                    # if s1 > 0:
-                    #     signal[i] = 1
-                    #     sum = 1
                     signal[i] = 1
                     sum = 1
             

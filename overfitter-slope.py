@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from backtesting import overfit_result
+from backtesting import run_backtest
 
 def hma(series, period):
     # Calculate weights
@@ -56,17 +56,25 @@ def strat(data):
     signal = [0] * len(data)
     sum = 0
 
-    for i in range(100, len(data)):
+    for i in range(200, len(data)):
         if sum == 0:
             if crossover(data, 'FHMA', 'MHMA', i):
                 if data['MHMA'].iloc[i] > data['SHMA'].iloc[i]:
-                    signal[i] = 1
-                    sum = 1
+                    s1 = data['MHMA'].iloc[i] - data['MHMA'].iloc[i-2]
+                    if s1 > 0:
+                        signal[i] = 1
+                        sum = 1
+                    # signal[i] = 1
+                    # sum = 1
             
             elif crossover(data, 'MHMA', 'FHMA', i):
                 if data['MHMA'].iloc[i] < data['SHMA'].iloc[i]:
-                    signal[i] = -1
-                    sum = -1
+                    s2 = data['MHMA'].iloc[i] - data['MHMA'].iloc[i-2]
+                    if s2 < 0:
+                        signal[i] = -1
+                        sum = -1
+                    # signal[i] = -1
+                    # sum = -1
 
         elif sum == 1:
             if crossover(data, 'MHMA', 'FHMA', i):
@@ -103,7 +111,7 @@ def loop(f, m, s):
 
     strategy_signals.to_csv("results.csv", index=False)
 
-    return overfit_result('results.csv')
+    run_backtest('results.csv')
     
 if __name__ == "__main__":
-    print(loop(30,35,50))
+    print(loop(30,35,180))
